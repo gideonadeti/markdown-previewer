@@ -15,6 +15,55 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
+.previewer h1 {
+	color: #343a40;
+}
+
+.previewer h2 {
+	color: #495057;
+}
+
+.previewer p {
+	color: #212529;
+}
+
+.previewer code {
+	background-color: #e9ecef;
+	padding: 2px 4px;
+	border-radius: 4px;
+}
+
+.previewer pre {
+	background-color: #e9ecef;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.previewer a {
+	color: #007bff;
+}
+
+.previewer blockquote {
+	border-left: 5px solid #007bff;
+	padding-left: 10px;
+	color: #6c757d;
+}
+
+.previewer img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.previewer strong {
+	font-weight: bold;
+}
+
+.previewer ul {
+	list-style-type: disc;
+	padding-left: 20px;
+}
+
 footer a {
 	text-decoration: none;
 }
