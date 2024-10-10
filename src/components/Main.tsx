@@ -51,7 +51,7 @@ Ready to start writing?  Either start changing stuff on the left or
   }, [markdown]);
 
   return (
-    <main className="flex-grow-1 container-fluid mt-5">
+    <main className="flex-grow-1 container-fluid mt-5 pb-5">
       <div
         className="container row mx-auto gap-5"
         style={{ minHeight: "75vh" }}
