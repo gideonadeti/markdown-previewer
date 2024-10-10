@@ -94,7 +94,7 @@ function Previewer({ cleanedMarkdown }: { cleanedMarkdown: string }) {
     <div className="col border rounded shadow-sm p-3 d-flex flex-column align-items-center">
       <h2>Previewer</h2>
       <div
-        className="rounded shadow-sm p-3 bg-light w-100 flex-grow-1 overflow-auto"
+        className="rounded shadow-sm p-3 bg-light w-100 flex-grow-1"
         dangerouslySetInnerHTML={{ __html: cleanedMarkdown }}
       />
     </div>
