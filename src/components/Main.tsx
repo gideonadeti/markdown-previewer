@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 export default function Main() {
   const [markdown, setMarkdown] = useState(`Marked - Markdown Parser
@@ -39,12 +40,17 @@ Ready to start writing?  Either start changing stuff on the left or
 [Marked]: https://github.com/markedjs/marked/
 [Markdown]: http://daringfireball.net/projects/markdown/
 `);
-  const [parsedMarkdown, setParsedMarkdown] = useState("");
+  const [cleanedMarkdown, setCleanedMarkdown] = useState("");
 
   useEffect(() => {
     async function parseMarkdown() {
       const parsedMarkdown = await marked(markdown);
-      setParsedMarkdown(parsedMarkdown);
+
+      const cleanedMarkdown = DOMPurify.sanitize(parsedMarkdown, {
+        USE_PROFILES: { html: true },
+      });
+
+      setCleanedMarkdown(cleanedMarkdown);
     }
 
     parseMarkdown();
@@ -57,7 +63,7 @@ Ready to start writing?  Either start changing stuff on the left or
         style={{ minHeight: "75vh" }}
       >
         <Markdown markdown={markdown} setMarkdown={setMarkdown} />
-        <Previewer parsedMarkdown={parsedMarkdown} />
+        <Previewer cleanedMarkdown={cleanedMarkdown} />
       </div>
     </main>
   );
@@ -83,13 +89,13 @@ function Markdown({
   );
 }
 
-function Previewer({ parsedMarkdown }: { parsedMarkdown: string }) {
+function Previewer({ cleanedMarkdown }: { cleanedMarkdown: string }) {
   return (
     <div className="col border rounded shadow-sm p-3 d-flex flex-column align-items-center">
       <h2>Previewer</h2>
       <div
         className="rounded shadow-sm p-3 bg-light w-100 flex-grow-1 overflow-auto"
-        dangerouslySetInnerHTML={{ __html: parsedMarkdown }}
+        dangerouslySetInnerHTML={{ __html: cleanedMarkdown }}
       />
     </div>
   );
