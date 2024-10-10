@@ -25,5 +25,10 @@ function Markdown() {
 }
 
 function Previewer() {
-  return <div className="col border rounded shadow-sm p-3"></div>;
+  return (
+    <div className="col border rounded shadow-sm p-3 d-flex flex-column align-items-center">
+      <h2>Previewer</h2>
+      <div className="rounded shadow-sm p-3 bg-light w-100 flex-grow-1" />
+    </div>
+  );
 }
